@@ -136,7 +136,7 @@ def genImage(sample):
     traffic_bps = [x for x in traffic_bps if int(x.get_attribute('number_of_wheels')) == 4]
     excluded_keywords = [
                     'truck', 'bus', 'van', 'sprinter', 'carlacola', 
-                    'firetruck', 'ambulance', 'cybertruck'
+                    'firetruck', 'ambulance', 'fusorosa', 'european_hgv'
                                 ] 
     traffic_bps = [x for x in traffic_bps if not any(keyword in x.id for keyword in excluded_keywords)]
     traffic_bps = sorted(traffic_bps, key=lambda x: x.id)

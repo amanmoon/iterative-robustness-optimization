@@ -20,13 +20,13 @@ class confidence_spec(specification_monitor):
 car1_domain = Struct({
     'distance': Box([8, 16]),  
     'lane_order': Categorical(*np.arange(0, 6)), 
-    'carID': Categorical(*np.arange(0, 29))
+    'carID': Categorical(*np.arange(0, 27))
 })
 
 car2_domain = Struct({
     'distance': Box([8, 16]), 
     'lane_order': Categorical(*np.arange(0, 2)), 
-    'carID': Categorical(*np.arange(0, 30))
+    'carID': Categorical(*np.arange(0, 27))
 })
 
 camera_domain = Struct({
@@ -36,12 +36,12 @@ camera_domain = Struct({
 })
 
 space = FeatureSpace({
-    'weatherID': Feature(Categorical(*np.arange(0, 23))),
+    'weatherID': Feature(Categorical(*np.arange(0, 24))),
     
     'numCars': Feature(Categorical(*np.arange(0, 3))),
-    
+
     'townLocation': Feature(Box([0, 1])),
-    
+
     'car1': Feature(car1_domain),
     'car2': Feature(car2_domain),
     'camera': Feature(camera_domain),
@@ -52,7 +52,7 @@ space = FeatureSpace({
     'color': Feature(Box([0, 1]))
 })
 
-sampler = FeatureSampler.randomSamplerFor(space)
+sampler = FeatureSampler.crossEntropySamplerFor(space)
 
 falsifier_params = DotMap(n_iters=MAX_ITERS,
                           compute_error_table=True,
